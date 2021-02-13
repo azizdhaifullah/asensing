@@ -1,0 +1,60 @@
+version: '2.0'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: asensing-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: asensing
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    networks:
+      - asensing-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: asensing-ws
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "7000:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - asensing-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: asensing-mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3307:3307"
+    volumes:
+      - asensingmysql:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_DATABASE: asensing_dev
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - asensing-network
+
+#Docker Networks
+networks:
+  asensing-network:
+    driver: bridge
+volumes:
+  asensingmysql:
+    driver: local
