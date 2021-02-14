@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,14 @@ Route::get('/', function () { return view('auth.login'); });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('attendance')->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('attendance');
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('attendance');
+});
+
+Route::prefix('employee')->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('attendance');
+});
