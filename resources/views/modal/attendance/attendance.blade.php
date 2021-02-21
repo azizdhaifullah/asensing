@@ -1,0 +1,1 @@
+@include('modal.attendance.attendanceImage')
