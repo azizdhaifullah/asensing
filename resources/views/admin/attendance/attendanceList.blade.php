@@ -20,23 +20,23 @@
             <div class="form-group row">
                 <label for="Region" class="col-sm-2 col-form-label">Region</label>
                 <div class="col-sm-10">
-                    <select class="form-control form-control-sm select2" style="width: 100%;">
-                        <option selected="selected">-- Select Region --</option>
-                        <option>Jakarta</option>
-                        <option>Surabaya</option>
-                        <option>Lampung</option>
+                    <select id="select-region" class="form-control form-control-sm select2" style="width: 100%;">
+                        <option selected="selected" value="0">-- Select Region --</option>
+                        <option value="1">Jakarta</option>
+                        <option value="2">Surabaya</option>
+                        <option value="3">Lampung</option>
                     </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Employee</label>
                 <div class="col-sm-10">
-                    <select class="form-control form-control-sm select2" style="width: 100%;" disabled>
-                        <option selected="selected">-- Select Employee --</option>
-                        <option>John Doe</option>
-                        <option>Martin</option>
-                        <option>Didit</option>
-                        <option>Apoy</option>
+                    <select id="select-employee" class="form-control form-control-sm select2" style="width: 100%;" disabled="true">
+                        <option selected="selected" value="0">-- Select Employee --</option>
+                        <option value="1">John Doe</option>
+                        <option value="2">Martin</option>
+                        <option value="3">Didit</option>
+                        <option value="4">Apoy</option>
                     </select>
                 </div>
             </div>
@@ -104,6 +104,19 @@
     $(document).ready(function() {
         $('.select2').select2({
             width: 'resolve'
+        })
+
+        $('#select-region').on('change',function(event){
+            event.preventDefault()
+            let regionValue = this.value
+
+            if(regionValue > 0){
+                $('#select-employee').prop('disabled', false)
+            }else{
+                console.log(regionValue);
+                $('#select-employee').val('0').trigger('change');
+                $('#select-employee').prop('disabled', true)
+            }
         })
 
         $('#attendance-table').hide()
