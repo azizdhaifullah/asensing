@@ -45,48 +45,36 @@
             </div>
         </form>
         <div id="attendance-table" class="table-responsive p-1">
-            <table class="table text-nowrap">
+            <table class="table text-nowrap text-center">
                 <thead>
                 <tr>
-                    <th>Employee Name</th>
+                    <th>#</th>
                     <th>Date</th>
                     <th>Clock In</th>
                     <th>Clock Out</th>
-                    <th>Region</th>
                     <th>Image</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="#" >John Doe</a></td>
+                        <td>1</td>
                         <td>{{ date("Y/m/d") }}</td>
                         <td>{{ date("H:i") }}</td>
                         <td>{{ date("H:i") }}</td>
-                        <td>Jakarta</td>
                         <td><a class="btn btn-sm" data-toggle="modal" data-target="#attendance-image"><i class="fas fa-eye"></i> Show Image</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#" >John Doe</a></td>
+                        <td>2</td>
                         <td>{{ date("Y/m/d") }}</td>
                         <td>{{ date("H:i") }}</td>
                         <td>{{ date("H:i") }}</td>
-                        <td>Jakarta</td>
                         <td><a class="btn btn-sm" data-toggle="modal" data-target="#attendance-image"><i class="fas fa-eye"></i> Show Image</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#" >John Doe</a></td>
+                        <td>3</td>
                         <td>{{ date("Y/m/d") }}</td>
                         <td>{{ date("H:i") }}</td>
                         <td>{{ date("H:i") }}</td>
-                        <td>Jakarta</td>
-                        <td><a class="btn btn-sm" data-toggle="modal" data-target="#attendance-image"><i class="fas fa-eye"></i> Show Image</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" >John Doe</a></td>
-                        <td>{{ date("Y/m/d") }}</td>
-                        <td>{{ date("H:i") }}</td>
-                        <td>{{ date("H:i") }}</td>
-                        <td>Jakarta</td>
                         <td><a class="btn btn-sm" data-toggle="modal" data-target="#attendance-image"><i class="fas fa-eye"></i> Show Image</a></td>
                     </tr>
                 </tbody>
