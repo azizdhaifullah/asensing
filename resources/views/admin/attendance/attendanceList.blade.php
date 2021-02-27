@@ -120,8 +120,16 @@
         })
 
         $('#attendance-table').hide()
-        $('#show-data').on('click', function(){
-            $('#attendance-table').show()
+        $('#show-data').on('click', function(event){
+            event.preventDefault()
+            let employeeValue = $('#select-employee').val()
+
+            console.log(employeeValue);
+            if(employeeValue > 0){
+                $('#attendance-table').show()
+            }else{
+                $('')
+            }
         });
     });
 

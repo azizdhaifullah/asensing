@@ -238,23 +238,23 @@ return [
         ['header' => 'Attendance'],
         [
             'text' => 'Attendance List',
-            'url'  => 'admin/settings',
+            'url'  => 'attendance',
             'icon' => 'fas fa-fw fa-clock',
-            'active' => ['attendance']
+            'active' => ['attendance', 'attendance/*']
         ],
         //------------------------------------------------------
         ['header' => 'Account'],
         [
             'text' => 'User',
-            'url'  => 'admin/settings',
+            'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
-            'active' => ['user']
+            'active' => ['user', 'user/*']
         ],
         [
             'text' => 'Employee',
-            'url'  => 'admin/settings',
+            'url'  => 'employee',
             'icon' => 'fas fa-fw fa-users',
-            'active' => ['employee']
+            'active' => ['employee', 'employee/*']
         ]
     ],
 

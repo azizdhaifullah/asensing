@@ -23,9 +23,11 @@ Route::prefix('attendance')->group(function () {
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('attendance');
+    Route::get('/', [App\Http\Controllers\Admin\User\UserListController::class, 'index'])->name('user');
+    Route::get('/create', [App\Http\Controllers\Admin\User\UserListController::class, 'createUser'])->name('create-user');
+    Route::get('/detail', [App\Http\Controllers\Admin\User\UserListController::class, 'detailUser'])->name('detail-user');
 });
 
 Route::prefix('employee')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('attendance');
+    Route::get('/', [App\Http\Controllers\Admin\Attendance\AttendanceController::class, 'index'])->name('employee');
 });
