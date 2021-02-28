@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\User;
+namespace App\Http\Controllers\Admin\Employee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserListController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,16 +24,16 @@ class UserListController extends Controller
      */
     public function index()
     {
-        return view('admin.user.userList');
+        return view('admin.employee.employeeList');
     }
 
-    public function createUser()
+    public function createEmployee()
     {
-        return view('admin.user.createUser');
+        return view('admin.employee.createEmployee');
     }
 
-    public function detailUser()
+    public function detailEmployee()
     {
-        return view('admin.user.detailUser');
+        return view('admin.employee.detailEmployee');
     }
 }

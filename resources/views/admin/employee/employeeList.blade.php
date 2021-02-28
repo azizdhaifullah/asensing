@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'User')
+@section('title', 'Employee')
 
 @section('content_header')
-<h1>User</h1>
+<h1>Employee</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-    <h3 class="card-title">User List</h3>
+    <h3 class="card-title">Employee List</h3>
 
     <div class="card-tools">
     </div>
@@ -18,34 +18,44 @@
     <div class="card-body">
         <div class="mb-2">
             <div class="row justify-content-end">
-                <a class="btn btn-primary" href="{{ route('create-user') }}" role="button">Create New User</a>
+                <a class="btn btn-primary" href="{{ route('create-employee') }}" role="button">Create New Employee</a>
             </div>
         </div>
-        <div id="user-table" class="table-responsive p-1">
+        <div id="employee-table" class="table-responsive p-1">
             <table class="table text-nowrap text-center">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Status</th>
+                    <th>Employee name</th>
+                    <th>Employee number</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Fingerprint Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr data-id="1234">
                         <td>1</td>
-                        <td>admin</td>
-                        <td>administrator</td>
-                        <td><span class="badge badge-success">active</span></td>
-                        <td><a class="btn btn-sm" href="{{route('detail-user', ['id'=>1])}}"><i class="fas fa-eye"></i></a></td>
+                        <td>Didit</td>
+                        <td>213-312-3333</td>
+                        <td>didit@mail.com</td>
+                        <td>08128767898</td>
+                        <td><span class="badge badge-danger">Not Exist</span></td>
+                        <td>
+                            <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>1])}}"><i class="fas fa-eye"></i></a>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>admin2</td>
-                        <td>administrator</td>
-                        <td><span class="badge badge-danger">not active</span></td>
-                        <td><a class="btn btn-sm" href="{{route('detail-user', ['id'=>1])}}"><i class="fas fa-eye"></i></a></td>
+                    <tr data-id="1234">
+                        <td>3</td>
+                        <td>Nabil</td>
+                        <td>213-312-3334</td>
+                        <td>nabil@mail.com</td>
+                        <td>08138767788</td>
+                        <td><span class="badge badge-success">Exist</span></td>
+                        <td>
+                            <a class="btn btn-sm" href="{{route('detail-user', ['id'=>2])}}"><i class="fas fa-eye"></i></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
