@@ -57,7 +57,7 @@
         </div>
         <div class="card-footer">
             <div class="row justify-content-end">
-                <a class="btn btn-default mr-3" href="{{route('user')}}" role="button">Cancel</a>
+                <a class="btn btn-default mr-3" href="{{ route('employee') }}" role="button">Cancel</a>
                 <a class="btn btn-success" href="#" role="button">Update</a>
             </div>
         </div>

@@ -17,8 +17,20 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class="mb-2">
-            <div class="row justify-content-end">
-                <a class="btn btn-primary" href="{{ route('create-employee') }}" role="button">Create New Employee</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Employee Name" aria-label="Employee Name" style="width: 250px;">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <a class="btn btn-primary" href="{{ route('create-employee') }}" role="button">Create New Employee</a>
+                </div>
             </div>
         </div>
         <div id="employee-table" class="table-responsive p-1">
@@ -44,6 +56,7 @@
                         <td><span class="badge badge-danger">Not Exist</span></td>
                         <td>
                             <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>1])}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm" data-toggle="modal" data-target="#employee-delete" style="color:red;"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
                     <tr data-id="1234">
@@ -54,12 +67,13 @@
                         <td>08138767788</td>
                         <td><span class="badge badge-success">Exist</span></td>
                         <td>
-                            <a class="btn btn-sm" href="{{route('detail-user', ['id'=>2])}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>2])}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm" data-toggle="modal" data-target="#employee-delete" style="color:red;"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="pagination justify-content-start">
+            <div class="pagination justify-content-end">
                 <ul class="pagination pagination-sm m-0 float-right">
                     <li class="page-item"><a class="page-link" href="#">«</a></li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -72,7 +86,7 @@
     </div>
     <!-- /.card-body -->
 </div>
-@include('modal.attendance.attendance')
+@include('modal.employee.employee')
 @stop
 
 @section('css')

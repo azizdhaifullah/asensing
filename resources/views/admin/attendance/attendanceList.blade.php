@@ -79,7 +79,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="pagination justify-content-start">
+            <div class="pagination justify-content-end">
                 <ul class="pagination pagination-sm m-0 float-right">
                     <li class="page-item"><a class="page-link" href="#">«</a></li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
