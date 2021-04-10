@@ -26,4 +26,26 @@ class AttendanceController extends Controller
     {
         return view('admin.attendance.attendanceList');
     }
+
+    public function getEmployee()
+    {
+        return view('admin.attendance.attendanceList');
+    }
+
+    public function getRegion($employee_id, $region_id)
+    {
+        return view('admin.attendance.attendanceList');
+    }
+
+    public function getList($employee_id, $region_id)
+    {
+        return ;
+    }
+
+    public function getImageDetail($attendance_id)
+    {
+        return view('admin.attendance.attendanceList');
+    }
+
 }
+

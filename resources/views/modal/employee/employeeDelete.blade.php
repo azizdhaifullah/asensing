@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Are you sure wan't to delete employee</p>
+                <p>Are you sure want to delete employee</p>
             </div>
             <div class="modal-footer justify-content-end">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
