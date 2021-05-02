@@ -62,7 +62,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>1])}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm" href="{{route('detail-employee', ['id' => $item['employee_id']])}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-sm" data-toggle="modal" data-target="#employee-delete" style="color:red;"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>

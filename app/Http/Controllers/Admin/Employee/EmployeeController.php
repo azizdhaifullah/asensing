@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
+    var $employeeData;
 
     /**
      * Create a new controller instance.
@@ -17,10 +18,11 @@ class EmployeeController extends Controller
      * @return void
      */
     public function __construct(
-
+        EmployeeData $employeeData
     )
     {
         $this->middleware('auth');
+        $this->employeeData = $employeeData;
     }
 
     /**
@@ -30,7 +32,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employeeData = EmployeeData::paginate(10);
+        $employeeData = $this->employeeData::paginate(10);
 
         return view('admin.employee.employeeList', compact(
             'employeeData'
@@ -39,20 +41,22 @@ class EmployeeController extends Controller
 
     public function createEmployee()
     {
-        $region = MrRegionData::all();
-        $regionData = [];
-        foreach ($region as $value) {
-            $regionData[$value["mrr_id"]] = $value["mrr_name"];
-        }
+        $regionData = $this->getRegionData();
 
         return view('admin.employee.createEmployee', compact(
             'regionData'
         ));
     }
 
-    public function detailEmployee()
+    public function detailEmployee($id)
     {
-        return view('admin.employee.detailEmployee');
+        $employeeDetailData = $this->employeeData->where('employee_id', $id)->first();
+        $regionData = $this->getRegionData();
+
+        return view('admin.employee.detailEmployee', compact(
+            'employeeDetailData',
+            'regionData'
+        ));
     }
 
     public function saveEmployee(Request $request)
@@ -65,7 +69,7 @@ class EmployeeController extends Controller
             'employee-region' => 'required'
         ]);
 
-        EmployeeData::create([
+        $this->employeeData::create([
             'employee_name' => $request['employee-name'],
             'employee_number' => $request['employee-number'],
             'employee_email' => $request['employee-email'],
@@ -75,5 +79,15 @@ class EmployeeController extends Controller
         ]);
 
         return redirect()->route('employee');
+    }
+
+    public function getRegionData(){
+        $region = MrRegionData::all();
+        $regionData = [];
+        foreach ($region as $value) {
+            $regionData[$value["mrr_id"]] = $value["mrr_name"];
+        }
+
+        return $regionData;
     }
 }
