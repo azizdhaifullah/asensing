@@ -42,6 +42,18 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="employee-region">Region</label>
+                        <select id="employee-region" class="form-control">
+                            <option selected>-- Select Region --</option>
+                            <option>Jakarta</option>
+                            <option>Surabaya</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <hr>
             <div class="col-md-6">
                 <div class="form-group">

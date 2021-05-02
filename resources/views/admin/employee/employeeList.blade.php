@@ -47,41 +47,29 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr data-id="1234">
-                        <td>1</td>
-                        <td>Didit</td>
-                        <td>213-312-3333</td>
-                        <td>didit@mail.com</td>
-                        <td>08128767898</td>
-                        <td><span class="badge badge-danger">Not Exist</span></td>
+                    @foreach ($employeeData->items() as $key => $item)
+                    <tr data-id="{{ $item['employee_id'] }}">
+                        <td>{{ $employeeData->firstItem() + $key }}</td>
+                        <td>{{ $item['employee_name'] }}</td>
+                        <td>{{ $item['employee_number'] }}</td>
+                        <td>{{ $item['employee_email'] }}</td>
+                        <td>{{ $item['employee_phone_number'] }}</td>
+                        <td>
+                            @if($item['employee_employee_fingerprint_id'])
+                            <span class="badge badge-success">Exist</span>
+                            @else
+                            <span class="badge badge-danger">Not Exist</span>
+                            @endif
+                        </td>
                         <td>
                             <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>1])}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-sm" data-toggle="modal" data-target="#employee-delete" style="color:red;"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
-                    <tr data-id="1234">
-                        <td>3</td>
-                        <td>Nabil</td>
-                        <td>213-312-3334</td>
-                        <td>nabil@mail.com</td>
-                        <td>08138767788</td>
-                        <td><span class="badge badge-success">Exist</span></td>
-                        <td>
-                            <a class="btn btn-sm" href="{{route('detail-employee', ['id'=>2])}}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm" data-toggle="modal" data-target="#employee-delete" style="color:red;"><i class="fas fa-times"></i></a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <div class="pagination justify-content-end">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
-            </div>
+            {!! defaultPagination($employeeData) !!}
         </div>
     </div>
     <!-- /.card-body -->
@@ -90,7 +78,6 @@
 @stop
 
 @section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')

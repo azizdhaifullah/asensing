@@ -32,4 +32,5 @@ Route::prefix('employee')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'index'])->name('employee');
     Route::get('/create', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'createEmployee'])->name('create-employee');
     Route::get('/detail', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'detailEmployee'])->name('detail-employee');
+    Route::post('/store', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'saveEmployee'])->name('store-employee');
 });

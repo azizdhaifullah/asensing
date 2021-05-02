@@ -17,6 +17,7 @@ class CreateFingerprintDataTable extends Migration
             $table->increments("fingerprint_id");
             $table->integer("fingerprint_key");
             $table->enum("fingerprint_status", ["N","Y"]);
+            $table->integer("fingerprint_region_id");
             $table->timestamps();
         });
     }

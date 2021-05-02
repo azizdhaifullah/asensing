@@ -15,10 +15,10 @@ class CreateEmployeeDataTable extends Migration
     {
         Schema::create('employee_data', function (Blueprint $table) {
             $table->increments("employee_id");
-            $table->integer("employee_fingerprint_id");
+            $table->integer("employee_fingerprint_id")->nullable();
             $table->integer("employee_region_id");
             $table->string("employee_name", 25)->nullable();
-            $table->integer("employee_number")->nullable();
+            $table->string("employee_number", 255)->nullable();
             $table->string("employee_email", 50)->nullable();
             $table->string("employee_phone_number", 20)->nullable();
             $table->integer("employee_created_by");
