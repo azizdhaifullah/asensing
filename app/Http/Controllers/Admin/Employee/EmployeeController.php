@@ -50,7 +50,7 @@ class EmployeeController extends Controller
 
     public function detailEmployee($id)
     {
-        $employeeDetailData = $this->employeeData->where('employee_id', $id)->first();
+        $employeeDetailData = $this->employeeData->find($id);
         $regionData = $this->getRegionData();
 
         return view('admin.employee.detailEmployee', compact(
@@ -61,15 +61,9 @@ class EmployeeController extends Controller
 
     public function saveEmployee(Request $request)
     {
-        $request->validate([
-            'employee-name' => 'required|max:25',
-            'employee-number' => 'required|max:255',
-            'employee-email' => 'required|email',
-            'employee-phone' => 'required|max:25',
-            'employee-region' => 'required'
-        ]);
+        $this->employeeData->validate($request);
 
-        $this->employeeData::create([
+        $this->employeeData->saveEmployee([
             'employee_name' => $request['employee-name'],
             'employee_number' => $request['employee-number'],
             'employee_email' => $request['employee-email'],
@@ -77,6 +71,24 @@ class EmployeeController extends Controller
             'employee_region_id' => $request['employee-region'],
             'employee_created_by' => Auth::user()->id
         ]);
+
+        return redirect()->route('employee');
+    }
+
+    public function updateEmployee(Request $request,$id)
+    {
+        $this->employeeData->validate($request);
+
+        $this->employeeData->updateEmployee([
+            'employee_name' => $request['employee-name'],
+            'employee_number' => $request['employee-number'],
+            'employee_email' => $request['employee-email'],
+            'employee_phone_number' => $request['employee-phone'],
+            'employee_region_id' => $request['employee-region'],
+            'employee_fingerprint_id' => $request['employee-fingerprint'],
+            'employee_updated_by' => Auth::user()->id,
+            'updated_at' => date("Y-m-d H:i:s")
+        ], $id);
 
         return redirect()->route('employee');
     }

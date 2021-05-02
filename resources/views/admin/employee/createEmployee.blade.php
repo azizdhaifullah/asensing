@@ -18,7 +18,7 @@
     </div>
     </div>
     <!-- /.card-header -->
-    <form method="post" action="{{ route('store-employee') }}" accept-charset="UTF-8">
+    <form method="post" action="{{ route('save-employee') }}" accept-charset="UTF-8">
         @csrf
         <div class="card-body">
             @if ($errors->any())
