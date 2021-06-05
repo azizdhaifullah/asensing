@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use App\Services\AppServices\Employee\FingerprintService;
+
 class EmployeeController extends Controller
 {
-    var $employeeData;
+    protected $employeeData;
+    protected $fingerprintService;
+
 
     /**
      * Create a new controller instance.
@@ -18,11 +22,13 @@ class EmployeeController extends Controller
      * @return void
      */
     public function __construct(
-        EmployeeData $employeeData
+        EmployeeData $employeeData,
+        FIngerprintService $fingerprintService
     )
     {
         $this->middleware('auth');
         $this->employeeData = $employeeData;
+        $this->fingerprintService = $fingerprintService;
     }
 
     /**
@@ -101,5 +107,17 @@ class EmployeeController extends Controller
         }
 
         return $regionData;
+    }
+
+    public function getFingerprintKey(){
+        $fingerprintData = $this->fingerprintService->getFingerprint();
+        return $fingerprintData;
+
+        try {
+            $this->fingerprintService->getLattepandaFingeprintStatus($fingerprintData['fingerprint_id']);
+            return response()->json(['id' => $fingerprintData['fingerprint_id']], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $fingerprintData['fingerprint_id']], 500);
+        }
     }
 }

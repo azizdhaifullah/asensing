@@ -19,6 +19,7 @@
     </div>
     <!-- /.card-header -->
     <form method="POST" action="{{ route('update-employee', ['id' => $employeeDetailData['employee_id']]) }}" accept-charset="UTF-8">
+    <input type="hidden" id="employee-id" value="{{$employeeDetailData['employee_id']}}">
     @csrf
     @method("PUT")
         <div class="card-body">
@@ -74,11 +75,11 @@
                         <input name="employee-fingerprint" type="text" class="form-control" placeholder="Fingerprint ID" aria-label="Fingerprint ID" value="{{ $employeeDetailData['employee_fingerprint_id'] }}" disabled>
                         @if(is_null($employeeDetailData['employee_fingerprint_id']))
                         <div class="input-group-append">
-                            <button class="btn btn-success" type="button">Generate Fingerprint</button>
+                            <button id="generate-fingerprint" class="btn btn-success" type="button">Generate Fingerprint</button>
                         </div>
                         @else
                         <div class="input-group-append">
-                            <button class="btn btn-warning" type="button">Regenerate Fingerprint</button>
+                            <button id="generate-fingerprint" class="btn btn-warning" type="button">Regenerate Fingerprint</button>
                         </div>
                         @endif
                     </div>
@@ -95,18 +96,26 @@
     <!-- /.card-body -->
 </div>
 @include('modal.attendance.attendance')
+@include('support.loading')
 @stop
 
 @section('css')
 @stop
 
 @section('js')
+<script src="{{ asset('vendor/pace-progress/pace.js') }}" defer></script>
+<script src="{{ asset('assets/js/employee/fingerprint.js') }}" defer></script>
 <script>
     $(document).ready(function() {
         $('.select2').select2({
             width: 'resolve'
         })
     });
-
+</script>
+<script>
+$(document).ready(function() {
+    $('#loadingDiv').hide();
+});
 </script>
 @stop
+
