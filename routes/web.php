@@ -36,7 +36,3 @@ Route::prefix('employee')->group(function () {
     Route::post('/save', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'saveEmployee'])->name('save-employee');
     Route::post('/generate', [App\Http\Controllers\Admin\Employee\EmployeeController::class, 'getFingerprintKey'])->name('generate-fingerprint');
 });
-
-Route::prefix('api')->group(function () {
-    Route::get('/test', [App\Http\Controllers\Api\ApiController::class, 'test'])->name('api-test');
-});
