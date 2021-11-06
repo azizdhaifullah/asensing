@@ -21,5 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
-Route::apiResource('attendance', App\Http\Controllers\Api\Test\ApiTestController::class)->middleware('client');
+Route::get('test', [App\Http\Controllers\Api\Test\ApiTestController::class, 'index'])->middleware('client');
+
+Route::prefix('asensing')->group(function () {
+    Route::prefix('employee')->group(function () {
+        Route::get('/', [App\Http\Controllers\Api\Admin\EmployeeApiController::class, 'getEmployeeList'])->middleware('client');
+    });
+});
 
