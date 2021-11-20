@@ -26,6 +26,7 @@ Route::get('test', [App\Http\Controllers\Api\Test\ApiTestController::class, 'ind
 Route::prefix('asensing')->group(function () {
     Route::prefix('employee')->group(function () {
         Route::get('/', [App\Http\Controllers\Api\Admin\EmployeeApiController::class, 'getEmployeeList'])->middleware('client');
+        Route::post('/insert', [App\Http\Controllers\Api\Admin\EmployeeApiController::class, 'createBulkEmployee'])->middleware('client');
     });
 });
 

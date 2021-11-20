@@ -6,12 +6,13 @@ use App\Http\Controllers\ApiController;
 use App\Services\AppServices\Employee\EmployeeService;
 use Exception;
 
-
 class EmployeeApiController extends ApiController
 {
     protected $employeeService;
 
-    public function __construct(EmployeeService $employeeService)
+    public function __construct(
+        EmployeeService $employeeService
+    )
     {
         $this->employeeService = $employeeService;
     }
@@ -23,6 +24,16 @@ class EmployeeApiController extends ApiController
             return $this->setResponse(200, "Success Get Employee", $data);
         } catch (Exception $e) {
             return $this->setResponse(400, $e->getMessage());
+        }
+    }
+
+    public function createBulkEmployee()
+    {
+        $response = $this->employeeService->createBulkEmployee();
+        if($response['status']){
+            return $this->setResponse(200, "Success Create Employee");
+        }else{
+            return $this->setResponse(400, $response['message']);
         }
     }
 }

@@ -23,7 +23,7 @@ class EmployeeData extends Model
             'employee-region' => 'required'
         ]);
     }
-
+    
     public function saveEmployee($data){
         $this->create($data);
     }

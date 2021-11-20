@@ -12,8 +12,10 @@ class EmployeeRepository
     }
 
     public function getAllEmployee(){
-        $data = $this->model->all();
+        return $this->model->all();
+    }
 
-        return $data;
+    public function saveEmployee($data){
+        return $this->model->insert($data);
     }
 }
